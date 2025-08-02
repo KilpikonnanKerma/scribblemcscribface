@@ -41,6 +41,11 @@ function saveCurrentTabContent() {
     tabs[currentTab].title = noteTitle.value;
 }
 
+function setTheme(themeName) {
+    const themeLink = document.getElementById('theme-style');
+    themeLink.href = `themes/style-${themeName}.css`;
+}
+
 leftBtn.addEventListener('click', () => {
     saveCurrentTabContent();
     if (currentTab > 0) {
