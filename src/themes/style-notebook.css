@@ -60,8 +60,8 @@ body {
     top: 40px;
     left: 50%;
     transform: translateX(-50%);
-    width: 700px;   /* Adjust width to cover your paper */
-    height: 900px;  /* Adjust height for the cone length */
+    width: 700px;
+    height: 900px;
     pointer-events: none;
     z-index: 1;
     background:

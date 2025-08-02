@@ -46,6 +46,22 @@ function setTheme(themeName) {
     themeLink.href = `themes/style-${themeName}.css`;
 }
 
+async function loadCustomTheme() {
+    const result = await window.scribbleAPI.loadThemeFile();
+    if (result.success) {
+        let customStyle = document.getElementById('custom-theme-style');
+        if (!customStyle) {
+            customStyle = document.createElement('style');
+            customStyle.id = 'custom-theme-style';
+            document.head.appendChild(customStyle);
+        }
+        document.getElementById('theme-style').disabled = true;
+        customStyle.textContent = result.cssContent;
+    } else {
+        alert('Theme load cancelled or failed.');
+    }
+}
+
 leftBtn.addEventListener('click', () => {
     saveCurrentTabContent();
     if (currentTab > 0) {

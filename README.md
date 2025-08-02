@@ -7,13 +7,13 @@ Welcome to **Scribble McScribface** – the note-taking app for those who take t
 - Multiple tabs, each with its own title and scribbles
 - Save your notes (Crazy I know)
 - Load your notes (title comes back, like magic)
+- Select your preferred theme or create your own!
 - Toggle lined paper for that real notebook vibe
-- Minimalist, distraction-free, and just a little bit silly
 
 ## 🔮 Upcoming stuff (Maybe)
 
 - Cool animations!
-- Skins/Themes
+- More Themes
 - A Windows installer / packages for different distros
 
 ## 🚀 Getting Started (Compiling source code)
