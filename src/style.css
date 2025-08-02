@@ -1,0 +1,161 @@
+body {
+	margin: 0;
+	font-family: 'Courier New', Courier, monospace;
+	background: linear-gradient(to bottom, #d6cec3, #f3efe7);
+	height: 100vh;
+	overflow: hidden;
+}
+
+.menubar {
+	/* background-color: #ccc; */
+	background: linear-gradient(to bottom, #f0f0f0, #c0c0c0);
+	padding: 2px;
+	display: flex;
+	box-shadow: 0 2px 4px #aaa;
+}
+
+.menu {
+	position: relative;
+}
+
+.menu button {
+	background: none;
+	border: none;
+	padding: 8px 12px;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.dropdown {
+	display: none;
+	position: absolute;
+	background-color: #eee;
+	box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+	z-index: 1000;
+	flex-direction: column;
+}
+
+.dropdown button {
+	padding: 8px 10px;
+	border: none;
+	background: none;
+	text-align: left;
+	width: 100%;
+	cursor: pointer;
+}
+
+.dropdown button:hover {
+	background-color: #ddd;
+}
+
+.title {
+	position: absolute;
+	align-items: center;
+
+	top: 46px;
+
+	height: 40px;
+	background-color: #fffdf5;
+}
+
+.title #noteTitle {
+	width: 595px;
+	height: 27px;
+	resize: none;
+	border: none;
+	outline: none;
+	background: none;
+
+	font-weight: 500;
+	font-size: 24px;
+
+	text-align: center;
+
+	overflow:hidden;
+	text-overflow: clip;
+
+	padding: 0;
+	margin: 15px;
+
+	background-color: #fffdf5;
+}
+
+.paper-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: calc(100vh - 90px);
+	margin-top: 25px;
+	padding: 20px;
+	box-sizing: border-box;
+}
+
+#editor {
+	width: 600px;
+	height: 100%;
+	padding-top: 47px;
+	padding-left: 23px;
+	padding-right: 23px;
+	padding-bottom: 23px;
+
+	border: 1px solid #aaa;
+	border-radius: 5px;
+	background-color: #fffdf5;
+	box-shadow: 0 0 5px rgba(0,0,0,0.2);
+	font-size: 16px;
+	resize: none;
+	line-height: 1.5;
+	outline: none;
+}
+
+#editor.lined {
+	background-image:
+		linear-gradient(#fffdf5, #fffdf5 80px), /* top margin buffer */
+		repeating-linear-gradient(
+			to bottom,
+			transparent,
+			transparent 23px,
+			#dcdcdc 24px
+		);
+	background-size: 100% 24px;
+	background-position: top;
+	background-repeat: no-repeat, repeat;
+}
+
+.tab-controls .right {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	display: flex;
+	gap: 10px;
+}
+
+.tab-controls .left {
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+	display: flex;
+	gap: 10px;
+}
+
+.tab-controls button {
+	width: 36px;
+	height: 36px;
+	border-radius: 18px;
+	border: none;
+	background: linear-gradient(145deg, #f0f0f0, #c0c0c0);
+	box-shadow: 4px 4px 5px #aaa;
+	font-size: 22px;
+	cursor: pointer;
+	user-select: none;
+	transition: background 0.2s ease;
+}
+
+.tab-controls button:hover {
+	box-shadow: 2px 2px 5px #aaa inset;
+}
+
+.tab-controls button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}

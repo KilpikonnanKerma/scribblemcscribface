@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Scribble McScribface</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="menubar">
+    <div class="menu">
+      <button onclick="toggleMenu('file')">File</button>
+      <div id="file" class="dropdown">
+        <button onclick="saveNote()">Save</button>
+        <button onclick="loadNote()">Load</button>
+        <button onclick="toggleLines()">Toggle Lines</button>
+        <button onclick="window.close()">Exit</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="paper-wrapper">
+    <textarea id="editor" class="lined" placeholder="Dear Scribble..."></textarea>
+
+    <div class="title">
+      <textarea id="noteTitle" placeholder="Untitled"></textarea>
+    </div>
+
+    <div class="tab-controls">
+      <div class="left">
+        <button id="remove-tab"><span>✕</span></button>
+      </div>
+      <div class="right">
+        <button id="left-arrow" disabled>←</button>
+        <button id="add-tab">＋</button>
+        <button id="right-arrow" disabled>→</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
+
