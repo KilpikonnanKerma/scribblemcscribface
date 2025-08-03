@@ -11,7 +11,6 @@ body {
 }
 
 .menubar {
-	/* background-color: #ccc; */
 	background: linear-gradient(to bottom, #b97a56, #a86b44);
 	padding: 2px;
 	display: flex;
@@ -33,12 +32,31 @@ body {
 }
 
 .dropdown {
-	display: none;
-	position: absolute;
-	background-color: #eee;
-	box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
-	z-index: 1000;
-	flex-direction: column;
+    display: none;
+    position: absolute;
+    background: #eee;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18), 0 1.5px 0 #bdbdbd;
+    border-radius: 8px;
+    z-index: 1000;
+    flex-direction: column;
+    min-width: 160px;
+    padding: 8px 0;
+    top: 100%;
+    left: 0;
+    margin-top: 12px;
+}
+
+.dropdown::before {
+    content: "";
+    position: absolute;
+    top: -12px;
+    left: 24px; /* Adjust to align arrow with button */
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 12px solid #eee;
+    filter: drop-shadow(0 1px 0 #bdbdbd);
 }
 
 .dropdown button {
@@ -55,10 +73,20 @@ body {
 	background-color: #ddd;
 }
 
+.light-switch {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	/* margin-top: 100px; */
+	margin-left: 100px;
+}
+
 .cone-light {
-    position: absolute;
+    position:fixed;
     top: 40px;
-    left: 50%;
+	left: 50%;
+
     transform: translateX(-50%);
     width: 700px;
     height: 900px;
@@ -70,8 +98,95 @@ body {
             rgba(255,255,220,0.4) 60%,
             rgba(255,255,220,0.0) 100%
         );
-    filter: blur(1.5px);
-    opacity: 0.85;
+    filter: blur(2px);
+    opacity: 0.80;
+}
+
+.light-switch input {
+	appearance: none;
+	height: 25px;
+	width: 25px;
+
+	background-color: #eeeeee;
+	border-radius: 100%;
+	transform: translate(0, 120px);
+	cursor: pointer;
+
+	animation-name: switch2;
+	animation-duration: 0.8s;
+	animation-timing-function: ease;
+
+	box-shadow: 10px 10px 5px rgba(0,0,0,0.2);
+}
+
+.light-switch input:checked {
+
+
+	animation-name: switch;
+	animation-duration: 0.8s;
+	animation-timing-function: ease;
+}
+
+.light-switch .line {
+	height: 200px;
+	width: 4px;
+	background-color: #eee;
+
+	transform: translate(0, -100px);
+
+	animation-name: pull2;
+	animation-duration: 0.8s;
+	animation-timing-function: ease;
+
+	box-shadow: 10px 10px 5px rgba(0,0,0,0.2);
+
+	z-index: -1;
+}
+
+.light-switch input:checked ~ .line {
+	animation-name: pull;
+	animation-duration: 0.8s;
+	animation-timing-function: ease;
+}
+
+@keyframes pull {
+	0,
+	100% {
+		height: 200px;
+	}
+	50% {
+		height: 300px;
+	}
+}
+
+@keyframes pull2 {
+	0,
+	100% {
+		height: 200px;
+	}
+	50% {
+		height: 300px;
+	}
+}
+
+@keyframes switch {
+	0,
+	100% {
+		transform: translate(0, 120px);
+	}
+	50% {
+		transform: translate(0, 220px);
+	}
+}
+
+@keyframes switch2 {
+	0,
+	100% {
+		transform: translate(0, 120px);
+	}
+	50% {
+		transform: translate(0, 220px);
+	}
 }
 
 .title {
@@ -167,7 +282,7 @@ body {
 	gap: 10px;
 }
 
-.tab-controls button {
+.paper-wrapper button {
 	width: 36px;
 	height: 36px;
 	border-radius: 18px;
@@ -180,11 +295,26 @@ body {
 	transition: background 0.2s ease;
 }
 
-.tab-controls button:hover {
+.paper-wrapper button:hover {
 	box-shadow: 2px 2px 5px #aaa inset;
 }
 
-.tab-controls button:disabled {
+.paper-wrapper button:disabled {
   opacity: 0.4;
   cursor: default;
+}
+
+.style-tools .right {
+	position: absolute;
+	right: 10px;
+	display: flex;
+	gap: 10px;
+}
+
+.light-switch input:checked ~ .cone-light {
+    display: none;
+}
+
+@media (max-width: 1000px) {
+	.light-switch {display: none;}
 }

@@ -50,6 +50,9 @@ body {
 	background-color: #ddd;
 }
 
+.cone-light { display: none; }
+.light-switch { display: none; }
+
 .title {
 	position: absolute;
 	align-items: center;
@@ -141,7 +144,7 @@ body {
 	gap: 10px;
 }
 
-.tab-controls button {
+.paper-wrapper button {
 	width: 36px;
 	height: 36px;
 	border-radius: 18px;
@@ -154,11 +157,18 @@ body {
 	transition: background 0.2s ease;
 }
 
-.tab-controls button:hover {
+.paper-wrapper button:hover {
 	box-shadow: 2px 2px 5px #aaa inset;
 }
 
-.tab-controls button:disabled {
+.paper-wrapper button:disabled {
   opacity: 0.4;
   cursor: default;
+}
+
+.style-tools .right {
+	position: absolute;
+	right: 10px;
+	display: flex;
+	gap: 10px;
 }

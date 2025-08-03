@@ -44,6 +44,13 @@ function saveCurrentTabContent() {
 function setTheme(themeName) {
     const themeLink = document.getElementById('theme-style');
     themeLink.href = `themes/style-${themeName}.css`;
+    document.getElementById('theme').style.display = 'none';
+}
+
+function setFontSize(size) {
+    editor.style.fontSize = size + "px";
+    document.getElementById('font-size').textContent = size;
+    document.getElementById('font-size-dropdown').style.display = 'none';
 }
 
 async function loadCustomTheme() {
