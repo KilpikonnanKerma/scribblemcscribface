@@ -10,6 +10,8 @@ body {
 	overflow: hidden;
 }
 
+.color-switch { display: none; }
+
 .menubar {
 	background: linear-gradient(to bottom, #b97a56, #a86b44);
 	padding: 2px;
@@ -24,7 +26,7 @@ body {
 .menu button {
 	background: none;
 	border: none;
-	padding: 8px 12px;
+	padding: 4px 6px;
 	font-weight: bold;
 	cursor: pointer;
 
@@ -50,7 +52,7 @@ body {
     content: "";
     position: absolute;
     top: -12px;
-    left: 24px; /* Adjust to align arrow with button */
+    left: 24px;
     width: 0;
     height: 0;
     border-left: 10px solid transparent;
@@ -88,8 +90,8 @@ body {
 	left: 50%;
 
     transform: translateX(-50%);
-    width: 700px;
-    height: 900px;
+    width: 42%;
+    height: 95%;
     pointer-events: none;
     z-index: 1;
     background:
@@ -120,8 +122,6 @@ body {
 }
 
 .light-switch input:checked {
-
-
 	animation-name: switch;
 	animation-duration: 0.8s;
 	animation-timing-function: ease;
@@ -149,8 +149,14 @@ body {
 	animation-timing-function: ease;
 }
 
+.light-switch input:checked ~ body {
+	background:
+        repeating-linear-gradient(90deg, #8d5e42 0px, #aa714f 4px, #945e3c 8px, #a76e4e 12px),
+        linear-gradient(120deg, #c59b74 0%, #af773a 100%),
+        linear-gradient(90deg, rgba(255,255,255,0.05) 50%, rgba(0,0,0,0.03) 100%);
+}
+
 @keyframes pull {
-	0,
 	100% {
 		height: 200px;
 	}
@@ -160,7 +166,6 @@ body {
 }
 
 @keyframes pull2 {
-	0,
 	100% {
 		height: 200px;
 	}
@@ -170,7 +175,6 @@ body {
 }
 
 @keyframes switch {
-	0,
 	100% {
 		transform: translate(0, 120px);
 	}
@@ -180,7 +184,6 @@ body {
 }
 
 @keyframes switch2 {
-	0,
 	100% {
 		transform: translate(0, 120px);
 	}
@@ -190,18 +193,18 @@ body {
 }
 
 .title {
-	position: absolute;
+	position: fixed;
 	align-items: center;
 
-	top: 50px;
+	top: 40px;
 
-	height: 40px;
+	height: 50px;
 	/* background-color: #fffdf5; */
 }
 
 .title #noteTitle {
 	width: 595px;
-	height: 27px;
+	/* height: 27px; */
 	resize: none;
 	border: none;
 	outline: none;
@@ -232,7 +235,7 @@ body {
 }
 
 #editor {
-	width: 600px;
+	width: 40%;
 	height: 100%;
 	padding-top: 50px;
 	padding-left: 23px;
@@ -315,6 +318,12 @@ body {
     display: none;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1200px) {
 	.light-switch {display: none;}
+}
+
+@media (max-width: 1200px) {
+	#editor {
+		width: 80%;
+	}
 }

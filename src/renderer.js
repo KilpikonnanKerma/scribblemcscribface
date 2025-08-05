@@ -1,4 +1,22 @@
-function toggleMenu(id) {
+window.addEventListener('DOMContentLoaded', () => {
+    const theme = window.scribbleAPI.getTheme() || 'light';
+    document.documentElement.setAttribute('data-theme', theme);
+})
+
+function toggleMode() {
+    const root = document.documentElement;
+    const modeToggle = document.getElementById('mode-toggle');
+
+    const current = root.getAttribute('data-theme');
+    const next = current === 'light' ? 'dark' : 'light';
+
+    root.setAttribute('data-theme', next);
+    modeToggle.textContent = next === 'dark' ? 'Light Mode' : 'Dark Mode';
+
+    window.scribbleAPI.setTheme(next);
+}
+
+function toggleMenu(id) {   
   const dropdown = document.getElementById(id);
   dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
 }
@@ -130,5 +148,9 @@ async function loadNote() {
         alert('Load cancelled or failed.');
     }
 }
+
+editor.addEventListener("scroll", () => {
+  editor.scrollTop = 0; // Force vertical scroll back to top
+});
 
 updateEditor();

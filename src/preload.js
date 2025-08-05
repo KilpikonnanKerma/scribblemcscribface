@@ -3,5 +3,7 @@ const { contextBridge, ipcRenderer } = require('electron');
 contextBridge.exposeInMainWorld('scribbleAPI', {
   saveFile: (content) => ipcRenderer.invoke('save-file', content),
   loadFile: () => ipcRenderer.invoke('load-file'),
-  loadThemeFile: () => ipcRenderer.invoke('load-theme-file')
+  loadThemeFile: () => ipcRenderer.invoke('load-theme-file'),
+  getTheme: () => localStorage.getItem('theme'),
+  setTheme: (theme) => localStorage.setItem('theme', theme),
 });

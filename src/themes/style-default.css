@@ -1,32 +1,74 @@
+
+[data-theme = "light"] {
+	--bg-1: #d6cec3;
+	--bg-2: #f3efe7;
+	--editor-bg: #fffdf5;
+
+	--menu-bar-bg-2: #f0f0f0;
+	--menu-bar-bg-1: #c0c0c0;
+	--menu-bar-text: #585858;
+	--menu-text-border-left: #a0a0a0;
+	--menu-text-border-right: #ebebeb;
+	--menu-bar-hover-1: #ddd;
+	--menu-bar-hover-2: #999;
+	--menu-bar-border: #acacac;
+}
+
+[data-theme = "dark"] {
+	--bg-1: #a8a8a8;
+	--bg-2: #383838;
+	--editor-bg: #fffdf5;
+
+	--menu-bar-bg-1: #3d3d3d;
+	--menu-bar-bg-2: #6d6d6d;
+	--menu-bar-text: #f0f0f0;
+	--menu-text-border-left: #111;
+	--menu-text-border-right: #666;
+	--menu-bar-hover-1: #444;
+	--menu-bar-hover-2: #222;
+	--menu-bar-border: #000;
+}
+
 body {
 	margin: 0;
 	font-family: 'Courier New', Courier, monospace;
-	background: linear-gradient(to bottom, #d6cec3, #f3efe7);
+	background: linear-gradient(to bottom, var(--bg-1), var(--bg-2));
 	height: 100vh;
 	overflow: hidden;
 }
 
 .menubar {
-	/* background-color: #ccc; */
-	background: linear-gradient(to bottom, #f0f0f0, #c0c0c0);
-	padding: 2px;
 	display: flex;
-	box-shadow: 0 2px 4px #aaa;
+	background: linear-gradient(to bottom, var(--menu-bar-bg-1) 0%, var(--menu-bar-bg-2) 100%);
+	/* border-top: 1px solid var(--menu-brdr-top); */
+	border-bottom: 1px solid var(--menu-bar-border);
+	align-items: center;
+	font-family: sans-serif;
 }
 
 .menu {
+	display: flex;
 	position: relative;
 }
 
 .menu button {
 	background: none;
 	border: none;
-	padding: 8px 12px;
-	font-weight: bold;
+	color: var(--menu-bar-text);
+	font-size: 13px;
+	padding: 6px 10px;
 	cursor: pointer;
-	color: #585858;
+	font-weight: bold;
+	border-right: 1px solid var(--menu-text-border-right);
+	border-left: 1px solid var(--menu-text-border-left);
 }
 
+.menu button:hover {
+	background: linear-gradient(to bottom, var(--menu-bar-hover-1) 0%, var(--menu-bar-hover-2) 100%);
+	color: #eee;
+
+	transition: 0.1s;
+}
 .dropdown {
 	display: none;
 	position: absolute;
@@ -54,18 +96,18 @@ body {
 .light-switch { display: none; }
 
 .title {
-	position: absolute;
+	position: fixed;
 	align-items: center;
 
-	top: 46px;
+	top: 30px;
 
-	height: 40px;
-	background-color: #fffdf5;
+	height: 30px;
+	/* background-color: var(--editor-bg); */
 }
 
 .title #noteTitle {
 	width: 595px;
-	height: 27px;
+	height: 35px;
 	resize: none;
 	border: none;
 	outline: none;
@@ -82,7 +124,7 @@ body {
 	padding: 0;
 	margin: 15px;
 
-	background-color: #fffdf5;
+	/* background-color: var(--editor-bg); */
 }
 
 .paper-wrapper {
@@ -96,7 +138,7 @@ body {
 }
 
 #editor {
-	width: 600px;
+	width: 40%;
 	height: 100%;
 	padding-top: 47px;
 	padding-left: 23px;
@@ -105,7 +147,10 @@ body {
 
 	border: 1px solid #aaa;
 	border-radius: 5px;
-	background-color: #fffdf5;
+	background-color: var(--editor-bg);
+
+	overflow: hidden;
+	resize: none;
 
 	box-shadow: 0 0 5px rgba(0,0,0,0.2);
 	font-size: 16px;
@@ -116,7 +161,7 @@ body {
 
 #editor.lined {
 	background-image:
-		linear-gradient(#fffdf5, #fffdf5 80px), /* top margin buffer */
+		linear-gradient(var(--editor-bg), var(--editor-bg) 80px), /* top margin buffer */
 		repeating-linear-gradient(
 			to bottom,
 			transparent,
@@ -171,4 +216,10 @@ body {
 	right: 10px;
 	display: flex;
 	gap: 10px;
+}
+
+@media (max-width: 1200px) {
+	#editor {
+		width: 80%;
+	}
 }

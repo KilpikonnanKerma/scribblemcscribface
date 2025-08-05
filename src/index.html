@@ -3,15 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <title>Scribble McScribface</title>
-  <!-- In your index.html <head> -->
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Shadows+Into+Light&display=swap" rel="stylesheet">
   <link id="theme-style" rel="stylesheet" href="themes/style-default.css">
 </head>
 <body>
+
   <div class="menubar">
     <div class="menu">
       <button onclick="toggleMenu('file')">File</button>
       <button onclick="toggleMenu('theme')">Theme</button>
+      <button class="color-switch" onclick="toggleMode()">Switch Colors</button>
+
       <div id="file" class="dropdown">
         <button onclick="saveNote()">Save</button>
         <button onclick="loadNote()">Load</button>
