@@ -7,3 +7,12 @@ contextBridge.exposeInMainWorld('scribbleAPI', {
   getTheme: () => localStorage.getItem('theme'),
   setTheme: (theme) => localStorage.setItem('theme', theme),
 });
+
+contextBridge.exposeInMainWorld('electronAPI', {
+    onFullscreenChanged: (callback) => {
+        ipcRenderer.on('fullscreen-changed', (event, isFullscreen) => {
+            console.log('Renderer got maximize event:', isFullscreen);
+            callback(isFullscreen);
+        });
+    }
+});

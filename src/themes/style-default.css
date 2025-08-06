@@ -1,7 +1,7 @@
 
 [data-theme = "light"] {
-	--bg-1: #d6cec3;
-	--bg-2: #f3efe7;
+	--bg-1: #f3efe7;
+	--bg-2: #d6cec3;
 	--editor-bg: #fffdf5;
 
 	--menu-bar-bg-2: #f0f0f0;
@@ -217,9 +217,17 @@ body {
 	display: flex;
 	gap: 10px;
 }
-
+/* 
 @media (max-width: 1200px) {
 	#editor {
 		width: 80%;
 	}
+} */
+
+html.maximized #editor {
+	width: 40%;
+}
+
+html:not(.maximized) #editor {
+	width: 80%;
 }

@@ -18,6 +18,14 @@ function createWindow () {
 
 	mainWindow.setMenu(null);
 	mainWindow.loadFile('src/index.html');
+
+	mainWindow.on('maximizer', () => {
+		mainWindow.webContents.send('fullscreen-changed', true);
+	});
+
+	mainWindow.on('unmaximize', () => {
+		mainWindow.webContents.send('fullscreen-changed', false);
+	});
 }
 
 app.whenReady().then(createWindow);
