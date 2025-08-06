@@ -12,6 +12,8 @@
 	--menu-bar-hover-1: #ddd;
 	--menu-bar-hover-2: #999;
 	--menu-bar-border: #acacac;
+
+	--button-shadow: #aaa;
 }
 
 [data-theme = "dark"] {
@@ -27,6 +29,8 @@
 	--menu-bar-hover-1: #444;
 	--menu-bar-hover-2: #222;
 	--menu-bar-border: #000;
+
+	--button-shadow: #000000;
 }
 
 body {
@@ -36,6 +40,8 @@ body {
 	height: 100vh;
 	overflow: hidden;
 }
+
+.code-container { display: none; }
 
 .menubar {
 	display: flex;
@@ -195,7 +201,7 @@ body {
 	border-radius: 18px;
 	border: none;
 	background: linear-gradient(145deg, #f0f0f0, #c0c0c0);
-	box-shadow: 4px 4px 5px #aaa;
+	box-shadow: 4px 4px 5px var(--button-shadow);
 	font-size: 22px;
 	cursor: pointer;
 	user-select: none;
@@ -203,7 +209,7 @@ body {
 }
 
 .paper-wrapper button:hover {
-	box-shadow: 2px 2px 5px #aaa inset;
+	box-shadow: 2px 2px 5px var(--button-shadow) inset;
 }
 
 .paper-wrapper button:disabled {

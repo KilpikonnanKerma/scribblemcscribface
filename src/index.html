@@ -4,15 +4,21 @@
   <meta charset="UTF-8">
   <title>Scribble McScribface</title>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Shadows+Into+Light&display=swap" rel="stylesheet">
-  <link id="theme-style" rel="stylesheet" href="themes/style-default.css">
+  <link id="theme-style" rel="stylesheet" href="themes/notes/style-default.css">
 </head>
 <body>
 
   <div class="menubar">
     <div class="menu">
       <button onclick="toggleMenu('file')">File</button>
-      <button onclick="toggleMenu('theme')">Theme</button>
-      <button class="color-switch" onclick="toggleMode()">Switch Colors</button>
+      <button onclick="toggleMenu('edit')">Edit</button>
+      <button class="theme-menu" onclick="toggleMenu('theme')">Theme</button>
+      <button class="color-switch" onclick="toggleMode()">Color</button>
+      <button id="code-toggle" onclick="toggleCodeEditor()">Code Editor</button>
+
+      <div id="edit" class="dropdown">
+        <button id="settings-btn" onclick="openSettings()">Preferences</button>
+      </div>
 
       <div id="file" class="dropdown">
         <button onclick="saveNote()">Save</button>
@@ -21,8 +27,8 @@
         <button onclick="window.close()">Exit</button>
       </div>
       <div id="theme" class="dropdown">
-        <button onclick="setTheme('default')">Default</button>
-        <button onclick="setTheme('notebook')">Notebook</button>
+        <button onclick="setTheme('default', 'notes')">Default</button>
+        <button onclick="setTheme('notebook', 'notes')">Notebook</button>
         <button onclick="loadCustomTheme()">Load Custom Theme!</button>
       </div>
     </div>
@@ -35,7 +41,7 @@
   </div>
 
   <div class="paper-wrapper">
-    <textarea id="editor" class="lined" placeholder="Dear Scribble..."></textarea>
+    <textarea id="editor" name="editor" class="lined numbered" placeholder="Dear Scribble..."></textarea>
 
     <div class="title">
       <textarea id="noteTitle" placeholder="Untitled"></textarea>
@@ -52,6 +58,14 @@
       </div>
     </div>
 
+    <div id="code-container" class="code-container">
+			<div id="line-numbers" class="container-lines"></div>
+			<textarea id="textarea" name="editor" class="container-textarea" placeholder="#include <LIBRARY>
+
+FUNCTION NAME() {
+	DO STUFF;
+}"></textarea>
+
     <div class="style-tools">
       <div class="right">
         
@@ -61,6 +75,7 @@
   </div>
 
   <script src="renderer.js"></script>
+  <script src="code-editor.js"></script>
 </body>
 </html>
 
