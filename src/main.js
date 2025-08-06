@@ -4,22 +4,24 @@ const path = require('path');
 const fs = require('fs');
 
 let mainWindow;
+let settingsWindow;
 
 function createWindow () {
 	mainWindow = new BrowserWindow({
 		width: 1024,
 		height: 768,
 		webPreferences: {
-		preload: path.join(__dirname, 'preload.js'),
-		contextIsolation: true,
-		nodeIntegration: false,
+			preload: path.join(__dirname, 'preload.js'),
+			contextIsolation: true,
+			nodeIntegration: false,
+			enableRemoteModule: false,
 		}
 	});
 
 	mainWindow.setMenu(null);
 	mainWindow.loadFile('src/index.html');
 
-	mainWindow.on('maximizer', () => {
+	mainWindow.on('maximize', () => {
 		mainWindow.webContents.send('fullscreen-changed', true);
 	});
 
@@ -28,7 +30,44 @@ function createWindow () {
 	});
 }
 
-app.whenReady().then(createWindow);
+function createSettingsWindow() {
+    if (settingsWindow) {
+        settingsWindow.focus();
+        return;
+    }
+
+    settingsWindow = new BrowserWindow({
+        width: 400,
+        height: 300,
+        title: "Preferences",
+        parent: mainWindow,
+        modal: true,
+        webPreferences: {
+            nodeIntegration: true,
+            contextIsolation: false,
+        }
+    });
+
+	settingsWindow.setMenu(null);
+    settingsWindow.loadFile('src/settings.html');
+
+    settingsWindow.on('closed', () => {
+        settingsWindow = null;
+    });
+}
+
+app.whenReady().then(() => {
+    createWindow();
+
+    ipcMain.on('open-settings', () => {
+        createSettingsWindow();
+    });
+});
+
+app.on('window-all-closed', () => {
+    if (process.platform !== 'darwin') app.quit();
+});
+
 
 // IPC handlers
 ipcMain.handle('save-file', async (event, content) => {

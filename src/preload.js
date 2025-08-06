@@ -6,6 +6,8 @@ contextBridge.exposeInMainWorld('scribbleAPI', {
   loadThemeFile: () => ipcRenderer.invoke('load-theme-file'),
   getTheme: () => localStorage.getItem('theme'),
   setTheme: (theme) => localStorage.setItem('theme', theme),
+
+  openSettings: () => ipcRenderer.send('open-settings'),
 });
 
 contextBridge.exposeInMainWorld('electronAPI', {

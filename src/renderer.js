@@ -30,7 +30,7 @@ function toggleLines() {
 	editor.classList.toggle('lined');
 }
 
-const editor = document.getElementById('editor');
+const editors = document.getElementsByName('editor');
 const noteTitle = document.getElementById('noteTitle');
 const leftBtn = document.getElementById('left-arrow');
 const rightBtn = document.getElementById('right-arrow');
@@ -39,6 +39,8 @@ const addBtn = document.getElementById('add-tab');
 
 let tabs = [{ title: '', content: ''}];
 let currentTab = 0;
+let currentTheme = "default";
+let previousTheme = "default";
 
 function updateEditor() {
 	editor.value = tabs[currentTab].content;
@@ -57,10 +59,24 @@ function saveCurrentTabContent() {
 	tabs[currentTab].title = noteTitle.value;
 }
 
-function setTheme(themeName) {
+function setTheme(themeName, themeType) {
+	previousTheme = currentTheme;
 	const themeLink = document.getElementById('theme-style');
-	themeLink.href = `themes/style-${themeName}.css`;
+	themeLink.href = `themes/${themeType}/style-${themeName}.css`;
 	document.getElementById('theme').style.display = 'none';
+	currentTheme = themeName;
+}
+
+function toggleCodeEditor() {
+	const newTheme = currentTheme === 'code' ? previousTheme : 'code';
+
+	if(newTheme == "code") {
+		document.getElementById('code-toggle').innerText = "Notes";
+		setTheme(newTheme, 'code-editor');
+	} else {
+		document.getElementById('code-toggle').innerText = "Code Editor";
+		setTheme(newTheme, 'notes');
+	}
 }
 
 function setFontSize(size) {
@@ -83,6 +99,10 @@ async function loadCustomTheme() {
 	} else {
 		alert('Theme load cancelled or failed.');
 	}
+}
+
+function openSettings() {
+	window.scribbleAPI.openSettings();
 }
 
 leftBtn.addEventListener('click', () => {
