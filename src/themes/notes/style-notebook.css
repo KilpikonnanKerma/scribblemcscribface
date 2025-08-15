@@ -268,7 +268,9 @@ body {
 	mask: 
 		radial-gradient(calc(.5*0.7*1lh) at calc(.5*1.5lh), 
 				#0000 calc(100% - 1px), red) 
-			0 0/ calc(100% - 1.5lh) 1lh no-clip
+			0 0/ calc(100% - 1.5lh) 1lh no-clip;
+
+	/* background-attachment: local; */
 }
 
 .tab-controls .right {

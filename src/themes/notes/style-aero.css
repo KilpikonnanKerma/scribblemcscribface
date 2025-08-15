@@ -14,6 +14,11 @@
 	--menu-bar-border: #acacac;
 
 	--button-shadow: #aaa;
+
+	--aero-button-hover-default: rgba(255,255,255, 0.3);
+	--aero-button-hover-shadow: rgba(0, 0, 0, 0.2);
+	--aero-tab-button-hover-default: rgba(255,255,255, 0.9);
+	--aero-tab-button-hover-accent: rgba(0, 0, 0, 0.4);
 }
 
 [data-theme = "dark"] {
@@ -31,6 +36,11 @@
 	--menu-bar-border: #000;
 
 	--button-shadow: #000000;
+
+	--aero-button-hover-default: rgba(225,225,225, 0.2);
+	--aero-button-hover-shadow: rgba(0, 0, 0, 0.2);
+	--aero-tab-button-hover-default: rgba(255,255,255, 0.8);
+	--aero-tab-button-hover-accent: rgba(0, 0, 0, 0.6);
 }
 
 body {
@@ -46,6 +56,7 @@ body {
 .menubar {
 	display: flex;
 	background: linear-gradient(to bottom, var(--menu-bar-bg-1) 0%, var(--menu-bar-bg-2) 100%);
+
 	/* border-top: 1px solid var(--menu-brdr-top); */
 	border-bottom: 1px solid var(--menu-bar-border);
 	align-items: center;
@@ -55,11 +66,22 @@ body {
 .menu {
 	display: flex;
 	position: relative;
+
+	background:
+		linear-gradient(
+			to bottom,
+			var(--aero-button-hover-default) 50%,
+			var(--aero-button-hover-shadow) 50%,
+			var(--aero-button-hover-shadow) 100%
+	);
+
+	width: 100%;
 }
 
 .menu button {
 	background: none;
 	border: none;
+
 	color: var(--menu-bar-text);
 	font-size: 13px;
 	padding: 6px 10px;
@@ -70,10 +92,23 @@ body {
 }
 
 .menu button:hover {
-	background: linear-gradient(to bottom, var(--menu-bar-hover-1) 0%, var(--menu-bar-hover-2) 100%);
-	color: #eee;
+	/* background: linear-gradient(to bottom, var(--menu-bar-hover-1) 0%, var(--menu-bar-hover-2) 100%); */
+	
+	background:
+		linear-gradient(
+			to bottom,
+			var(--aero-button-hover-default) 50%,
+			var(--aero-button-hover-shadow) 50%,
+			var(--aero-button-hover-default) 100%
+		),
+		radial-gradient(
+			circle at 50% 100%,
+			var(--aero-button-hover-default) 0%,
+			var(--aero-button-hover-default) 20%,
+			var(--aero-button-hover-shadow) 100%
+	);
 
-	transition: 0.1s;
+	/* color: #eee; */
 }
 .dropdown {
 	display: none;
@@ -201,7 +236,16 @@ body {
 	height: 36px;
 	border-radius: 18px;
 	border: none;
-	background: linear-gradient(145deg, #f0f0f0, #c0c0c0);
+	/* background: linear-gradient(145deg, #f0f0f0, #c0c0c0); */
+
+	background: radial-gradient(
+        circle at 50% 35%,
+        rgba(255,255,255,1) 0%,
+        rgba(225,225,225,1) 40%,
+        rgba(200,200,200,1) 60%,
+        rgba(100,100,100, 1) 100%
+    );
+
 	box-shadow: 4px 4px 5px var(--button-shadow);
 	font-size: 22px;
 	cursor: pointer;
@@ -211,6 +255,14 @@ body {
 
 .paper-wrapper button:hover {
 	box-shadow: 2px 2px 5px var(--button-shadow) inset;
+
+	background: radial-gradient(
+        circle at 50% 35%,
+        rgba(255,255,255,0.6) 0%,        /* bright center */
+        rgba(255,255,255,0.3) 40%,       /* fade */
+        rgba(255,255,255,0.15) 60%,      /* softer */
+        rgba(0,0,0,0.15) 100%
+    );
 }
 
 .paper-wrapper button:disabled {

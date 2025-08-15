@@ -167,10 +167,6 @@ async function loadNote() {
 	}
 }
 
-editor.addEventListener("scroll", () => {
-	editor.scrollTop = 0;
-});
-
 window.electronAPI.onFullscreenChanged((isMaximized) => {
 	document.documentElement.classList.toggle('maximized', isMaximized);
 	console.log('Window maximized:', isMaximized);

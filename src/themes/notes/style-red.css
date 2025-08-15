@@ -1,7 +1,7 @@
 
 [data-theme = "light"] {
-	--bg-1: #f38686;
-	--bg-2: #943939;
+	--bg-1: #b1495b;
+	--bg-2: #a32638;
 	--editor-bg: #fffdf5;
 
 	--menu-bar-bg-2: #f0f0f0;
@@ -17,8 +17,8 @@
 }
 
 [data-theme = "dark"] {
-	--bg-1: #810000;
-	--bg-2: #2e0000;
+	--bg-1: #791c29;
+	--bg-2: #4e121b;
 	--editor-bg: #fffdf5;
 
 	--menu-bar-bg-1: #3d3d3d;
@@ -155,8 +155,8 @@ body {
 	border-radius: 5px;
 	background-color: var(--editor-bg);
 
-	overflow: hidden;
-	resize: none;
+	/* overflow: hidden;
+	resize: none; */
 
 	box-shadow: 0 0 5px rgba(0,0,0,0.2);
 	font-size: 16px;
