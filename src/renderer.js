@@ -14,7 +14,7 @@ function toggleMode() {
 	window.scribbleAPI.setTheme(next);
 }
 
-function toggleMenu(id) {   
+function toggleMenu(id) {
 	const dropdown = document.getElementById(id);
 	dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
 }
@@ -166,6 +166,10 @@ async function loadNote() {
 		alert('Load cancelled or failed.');
 	}
 }
+
+editor.addEventListener("scroll", () => {
+	editor.scrollTop = 0;
+});
 
 window.electronAPI.onFullscreenChanged((isMaximized) => {
 	document.documentElement.classList.toggle('maximized', isMaximized);

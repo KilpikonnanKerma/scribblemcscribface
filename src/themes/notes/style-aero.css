@@ -258,10 +258,10 @@ body {
 
 	background: radial-gradient(
         circle at 50% 35%,
-        rgba(255,255,255,0.6) 0%,        /* bright center */
-        rgba(255,255,255,0.3) 40%,       /* fade */
-        rgba(255,255,255,0.15) 60%,      /* softer */
-        rgba(0,0,0,0.15) 100%
+        rgba(225,225,225,1) 0%,        /* bright center */
+        rgba(225,225,225,0.9) 40%,       /* fade */
+        rgba(200,200,200,0.9) 60%,      /* softer */
+        rgba(75,75,75,0.9) 100%
     );
 }
 

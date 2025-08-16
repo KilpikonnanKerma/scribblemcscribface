@@ -2,9 +2,39 @@
 <html>
 <head>
     <title>Preferences</title>
+    <link id="theme-style" rel="stylesheet" href="settings.css">
 </head>
-<body>
-    <h2>Settings</h2>
-    <button id="save-btn">Save</button>
+<body id="settings-body">
+    <div class="settings-sidebar">
+        <h2 id="title">Preferences</h2>
+        <div class="categories">
+            <button data-target="app" style="user-select: auto;"id="category-btn">App</button>
+            <button data-target="menubar" id="category-btn">Menubar</button>
+            <button data-target="saving" id="category-btn">Saving</button>
+        </div>
+    </div>
+    <div class="settings">
+        <div class="category" id="app"> 
+            <div id="option" class="def-theme">
+                <p>Default theme</p>
+                <select name="Default theme" id="default-theme">
+                    <option value="default">Default</option>
+                    <option value="aero">Aero</option>
+                    <option value="crimson">Crimson</option>
+                    <option value="notebook">Notebook</option>
+                </select>
+            </div>
+        </div>
+        <div class="category" id="menubar">
+            <p>hello from menubar</p>
+        </div>
+        <div class="category" id="saving">
+            <p>hello from saving</p>
+        </div>
+        <button id="save-btn">Save</button>
+    </div>
+
+    <script src="settings.js"></script>
+    <script src="renderer.js"></script>
 </body>
 </html>
