@@ -117,4 +117,3 @@ ipcMain.handle('load-theme-file', async () => {
 		return { success: true, cssContent };
 	}
 	return { success: false };
-});
