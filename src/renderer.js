@@ -14,7 +14,7 @@ function toggleMode() {
 	window.scribbleAPI.setTheme(next);
 }
 
-function toggleMenu(id) {   
+function toggleMenu(id) {
 	const dropdown = document.getElementById(id);
 	dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
 }

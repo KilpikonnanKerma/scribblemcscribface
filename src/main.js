@@ -8,8 +8,10 @@ let settingsWindow;
 
 function createWindow () {
 	mainWindow = new BrowserWindow({
-		width: 1024,
-		height: 768,
+		width: 800,
+		height: 600,
+		minWidth: 400,
+		minHeight: 300,
 		webPreferences: {
 			preload: path.join(__dirname, 'preload.js'),
 			contextIsolation: true,
@@ -42,7 +44,11 @@ function createSettingsWindow() {
         title: "Preferences",
         parent: mainWindow,
         modal: true,
+		resizable: false,
+		maximizable: false,
+		minimizable: false,
         webPreferences: {
+			preload: path.join(__dirname, 'preload.js'),
             nodeIntegration: true,
             contextIsolation: false,
         }
