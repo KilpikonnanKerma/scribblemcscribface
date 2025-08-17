@@ -102,6 +102,12 @@ body {
 	transition: 0.1s;
 }
 
+#save-btn {
+	position: fixed;
+	bottom: 5px;
+	right: 5px;
+}
+
 .category {
     display: none;
 
@@ -110,9 +116,7 @@ body {
 
 #option {
     display: flex;
-    height: 20px;
 }
 
 #option p {
     margin-right: 30vw;
-}

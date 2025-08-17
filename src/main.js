@@ -44,8 +44,9 @@ function createSettingsWindow() {
         title: "Preferences",
         parent: mainWindow,
         modal: true,
-		minWidth: 600,
-		minHeight: 400,
+		resizable: false,
+		maximizable: false,
+		minimizable: false,
         webPreferences: {
 			preload: path.join(__dirname, 'preload.js'),
             nodeIntegration: true,
@@ -116,4 +117,3 @@ ipcMain.handle('load-theme-file', async () => {
 		return { success: true, cssContent };
 	}
 	return { success: false };
-});
