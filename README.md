@@ -34,15 +34,6 @@ Welcome to **Scribble McScribface** (or just Scribble app idk) – the note-taki
    npm start
    ```
 
-## 📝 Usage
-
-- **File > Save:** Save your current tab’s note (title = first line).
-- **File > Load:** Load a note (Overrides the currently opened tab).
-- **＋:** Add a new tab for more scribbles.
-- **← / →:** Switch between tabs.
-- **✕:** Remove the current tab.
-- **Toggle Lines:** Toggles the paper lines (Default is on).
-
 ## 🤔 Why?
 
 Why not.
